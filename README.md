@@ -3,36 +3,6 @@
 Create a backup of a database from MariaDB or MySQL. The backups are automatically compressed and stored in the
 directory /var/backup/mariadb.
 
-## Environment variables
-
-### MYSQL_HOST
-
-Host to connect.
-
-Default: mysql
-
-### MYSQL_DATABASE
-
-Name of the database to backup.
-
-### MYSQL_USER
-
-User for the backup. If possible a user with only read access for the database.
-
-Default: backup
-
-### MYSQL_PASSWORD
-
-### LOGROTATE_FILES_MAX
-
-Remove oldest backup if more than `LOGROTATE_FILES_MAX` exists.
-
-Default: 28
-
-### LOGROTATE_AGE_MAX
-
-Default: 90
-
 ## Usage
 
 ### Manual
@@ -43,4 +13,36 @@ Default: 90
         -e MYSQL_DATABASE=wordpress \
         -e MYSQL_USER=backup \
         -e MYSQL_PASSWORD=backup-password \
-        foobox/mariadb-backup:10.2.15
+        twofour/mariadb-backup
+
+## Environment variables
+
+### MYSQL_HOST
+
+Host to connect.
+
+Default: mysql
+
+### MYSQL_USER
+
+User for the backup. If possible a user with only read access for the database.
+
+Default: backup
+
+### MYSQL_PASSWORD
+
+### MYSQL_DATABASE
+
+Name of the database to backup.
+
+### LOGROTATE_FILES_MAX
+
+Remove oldest backup if more than `LOGROTATE_FILES_MAX` exists.
+
+Default: 28
+
+### LOGROTATE_AGE_MAX
+
+Max age of your backups in days.
+
+Default: 90
