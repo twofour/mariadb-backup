@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -x
+
+BACKUP_FILENAME=/var/backup/mariadb/$MYSQL_DATABASE.sql
+
+mysqldump \
+    --default-character-set=utf8 \
+    --disable-keys \
+    --single-transaction \
+    --host=$MYSQL_HOST \
+    --user=$MYSQL_USER \
+    --password=$MYSQL_PASSWORD \
+    --result-file=$BACKUP_FILENAME \
+    $MYSQL_DATABASE
+
+if [ $? != 0 ]; then
+    if [ -f "$BACKUP_FILENAME" ]; then
+        echo Removing $BACKUP_FILENAME
+        rm $BACKUP_FILENAME
+    fi
+    exit 1
+fi
+
+logrotate --state=/dev/null --log=/dev/stderr --force /etc/logrotate.conf

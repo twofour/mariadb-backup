@@ -1,0 +1,19 @@
+#!/bin/sh
+
+if [ -n "$LOGROTATE_AGE_MAX" ]; then
+    sed -i "s/\$LOGROTATE_AGE_MAX/$LOGROTATE_AGE_MAX/g" /etc/logrotate.conf
+fi
+
+if [ -n "$LOGROTATE_FILES_MAX" ]; then
+    sed -i "s/\$LOGROTATE_FILES_MAX/$LOGROTATE_FILES_MAX/g" /etc/logrotate.conf
+fi
+
+if [ -n "$LOGROTATE_COMPRESSION_LEVEL" ]; then
+    sed -i "s/\$LOGROTATE_COMPRESSION_LEVEL/$LOGROTATE_COMPRESSION_LEVEL/g" /etc/logrotate.conf
+fi
+
+if [ -n "$MYSQL_DATABASE" ]; then
+    sed -i "s/\$MYSQL_DATABASE/$MYSQL_DATABASE/g" /etc/logrotate.conf
+fi
+
+exec "$@"

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+find  $1*.sql.gz -not -name '*latest*' | sort -r | head -n 1 | xargs -r -I filename ln -sf filename $1_latest.sql.gz

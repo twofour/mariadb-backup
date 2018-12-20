@@ -1,0 +1,6 @@
+#!/bin/sh
+
+apk add --no-cache logrotate
+mkdir -p /var/backup/mariadb
+
+rm -rf /etc/logrotate.d
