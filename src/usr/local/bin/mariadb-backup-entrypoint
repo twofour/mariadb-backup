@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ -n "$MYSQL_SERVICE" ]; then
+    export MYSQL_HOST=$(rancher-service-to-host $MYSQL_SERVICE)
+fi
+
 if [ -n "$LOGROTATE_AGE_MAX" ]; then
     sed -i "s/\$LOGROTATE_AGE_MAX/$LOGROTATE_AGE_MAX/g" /etc/logrotate.conf
 fi
