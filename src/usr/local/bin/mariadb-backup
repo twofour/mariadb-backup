@@ -8,6 +8,7 @@ mysqldump \
     --default-character-set=utf8 \
     --disable-keys \
     --single-transaction \
+    --hex-blob \
     --host=$MYSQL_HOST \
     --user=$MYSQL_USER \
     --password=$MYSQL_PASSWORD \
