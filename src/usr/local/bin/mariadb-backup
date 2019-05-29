@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -x
+# set -x
 
 BACKUP_FILENAME=/var/backup/mariadb/$MYSQL_DATABASE.sql
 
